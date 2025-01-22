@@ -41,17 +41,17 @@ elif package_version == '0.5.4':
     from .vllm_v_0_5_4.llm import LLM
     from .vllm_v_0_5_4.llm import LLMEngine
     from .vllm_v_0_5_4 import parallel_state
-elif package_version == '0.6.3':
+else:
     vllm_version = '0.6.3'
     from .vllm_v_0_6_3.llm import LLM
     from .vllm_v_0_6_3.llm import LLMEngine
     from .vllm_v_0_6_3 import parallel_state
-elif vs.parse(package_version) >= vs.parse('0.6.6.post2.dev252+g8027a724'):
-    # This is temporal.
-    # From this version on, vllm supports SPMD inference
-    # See https://github.com/vllm-project/vllm/pull/12071
-    pass
-else:
-    raise ValueError(
-        f'vllm version {package_version} not supported. Currently supported versions are 0.3.1, 0.4.2, 0.5.4 and 0.6.3.'
-    )
+# elif vs.parse(package_version) >= vs.parse('0.6.6.post2.dev252+g8027a724'):
+#     # This is temporal.
+#     # From this version on, vllm supports SPMD inference
+#     # See https://github.com/vllm-project/vllm/pull/12071
+#     pass
+# else:
+#     raise ValueError(
+#         f'vllm version {package_version} not supported. Currently supported versions are 0.3.1, 0.4.2, 0.5.4 and 0.6.3.'
+#     )

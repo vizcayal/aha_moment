@@ -69,6 +69,7 @@ class EngineArgs(EngineArgs):
 
     def create_engine_config(self) -> EngineConfig:
         engine_config = super().create_engine_config()
+        print('engine_config', engine_config)
 
         # NOTE[VERL]: Use the world_size set by torchrun
         world_size = int(os.getenv("WORLD_SIZE", "-1"))

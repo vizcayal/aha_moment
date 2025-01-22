@@ -1,0 +1,75 @@
+      
+environment:
+  image: harbor.bk8s/library/environment:cuda12
+  force_pull_image: true
+  add_capabilities:
+    - IPC_LOCK
+  pod_spec:
+    spec:
+      containers:
+        - name: determined-container
+          resources:
+            limits:
+              cpu: "96"
+              memory: 512Gi
+          volumeMounts:
+            - mountPath: /data
+              name: data
+            - mountPath: /datasets
+              name: dataset
+            - mountPath: /root
+              name: data
+              subPath: home/junjayzhang/
+            # - mountPath: /opt/conda
+            #   name: data
+            #   subPath: home/junjayzhang//Megatron-LM/.pixi/envs/default
+          env:
+            # - name: PYTORCH_CUDA_ALLOC_CONF
+            #   value: "expandable_segments:True"
+            - name: CONDA_OVERRIDE_CUDA
+              value: "12.7"
+            - name: EXPERIMENT_NAME
+              value: "test_4_card"
+            - name: BASE_MODEL
+              value: "/data/models/Qwen2.5-3B"
+            - name: DATA_DIR
+              value: "/datasets/arithmetic-3_digit"
+            - name: no_proxy
+              value: >-
+                localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local,192.168.111.111
+            - name: NO_PROXY
+              value: >-
+                localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local,192.168.111.111
+            # - name: NCCL_DEBUG
+            #   value: ERROR
+            - name: NCCL_SOCKET_IFNAME
+              value: eth0
+            # - name: NCCL_IB_GID_INDEX
+            #   value: '3'
+            # - name: NCCL_IB_QPS_PER_CONNECTION
+            #   value: '2'
+            # - name: NCCL_IB_TIMEOUT
+            #   value: '22'
+            - name: NCCL_ALGO
+              value: Tree
+            # - name: TORCH_NCCL_TRACE_BUFFER_SIZE
+            #   value: '2000'
+            # - name: TORCH_NCCL_DUMP_ON_TIMEOUT
+            #   value: 'true'
+            # - name: TORCH_NCCL_DEBUG_INFO_TEMP_FILE
+            #   value: /tmp/nccl_trace_rank_
+            - name: UB_SKIPMC
+              value: '1'
+
+name: tiny_zero_test
+searcher:
+  name: single
+  metric: validation_loss
+  max_length:
+    epochs: 1
+workspace: lr-distributed
+project: junjayzhang
+resources:
+  resource_pool: distributed-lionrock
+  slots_per_trial: 4 # GPUs
+entrypoint: cd ~/TinyZero && pixi r tiny_zero

@@ -38,6 +38,8 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
     """
     answer = extract_solution(solution_str=solution_str)
     do_print = random.randint(1, 64) == 1
+    len_solution = len(solution_str)
+    len_extra_score = len_solution / 3000
     if do_print:
         print(f"--------------------------------")
         print(f"Ground truth: {ground_truth} | Extracted answer: {answer}")
@@ -51,7 +53,7 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
         if int(answer) == int(ground_truth):
             if do_print:
                 print(f"Correct answer: {answer}")
-            return score
+            return score + len_extra_score
         else:
             if do_print:
                 print(f"Incorrect answer {answer} | Ground truth: {ground_truth}")

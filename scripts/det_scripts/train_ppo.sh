@@ -7,7 +7,7 @@ python3 -m verl.trainer.main_ppo \
  data.max_response_length=1024 \
  actor_rollout_ref.model.path=$BASE_MODEL \
  actor_rollout_ref.actor.optim.lr=1e-6 \
- actor_rollout_ref.actor.ppo_mini_batch_size=128 \
+ actor_rollout_ref.actor.ppo_mini_batch_size=$BATCH_SIZE \
  actor_rollout_ref.actor.ppo_micro_batch_size=8 \
  actor_rollout_ref.rollout.log_prob_micro_batch_size=8 \
  actor_rollout_ref.rollout.tensor_model_parallel_size=$ROLLOUT_TP_SIZE \

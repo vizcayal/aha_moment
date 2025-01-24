@@ -2,34 +2,18 @@ See [OLD_README.md](OLD_README.md)
 
 ## Instalation
 ```
-conda create -n zero python=3.9
-pip install -e .
-# install torch [or you can skip this step and let vllm to install the correct version for you]
-pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu121
-
-# install vllm
-pip3 install vllm==0.6.3 # or you can install 0.5.4, 0.4.2 and 0.3.1
-pip3 install ray
-
-# flash attention 2
-pip3 install flash-attn --no-build-isolation
-
-# quality of life
-pip install wandb IPython matplotlib
+pixi update
 ```
 
 ## The Task
 
 ## Generate Data
 ```
-conda activate zero
-python examples/data_preprocess/countdown.py
+pixi shell
+python ./examples/data_preprocess/countdown.py --local_dir {your path to dataset}
 ```
 
 ## Run Training
-```
-conda activate zero
-```
 **Single GPU dry run**
 Works for model <= 1.5B
 

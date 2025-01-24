@@ -37,10 +37,7 @@ dependencies = [
     "hydra-core",
     "numpy",
     "pybind11",
-    "ray",
-    "tensordict",
-    "transformers<4.48",
-    "vllm<=0.6.3",
+    "transformers<=4.48.1", "ray>=2.40.0,<3", "tensordict>=0.5.0,<0.6", "zmq>=0.0.0,<0.0.1",
 ]
 
 # Optional dependencies (extras_require in setup.py)
@@ -76,3 +73,34 @@ verl = [
   "version/*",
   "trainer/config/*.yaml"
 ]
+
+[tool.pixi.project]
+channels =  ["https://prefix.dev/meta-forge", "conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.pypi-dependencies]
+verl = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+test = { features = ["test"], solve-group = "default" }
+
+[tool.pixi.tasks]
+tiny_zero_ppo = "bash ./scripts/det_scripts/train_ppo.sh"
+tiny_zero_grpo = "bash ./scripts/det_scripts/train_grpo.sh"
+
+[tool.pixi.dependencies]
+pytorch = { version = "2.4.1", build = "*cuda*" }
+flash-attn = ">=2.7.3,<3"
+wandb = ">=0.19.4,<0.20"
+ipython = ">=8.31.0,<9"
+matplotlib = ">=3.10.0,<4"
+vllm = "0.6.3.*"
+xformers = ">=0.0.29.post1,<0.0.30"
+pynvml = ">=12.0.0,<13"
+datasets = ">=3.2.0,<4"
+triton = ">=3.1.0,<4"
+
+[tool.pixi.system-requirements]
+cuda = "12.7"
+

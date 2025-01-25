@@ -11,7 +11,7 @@ Twitter thread: https://x.com/jiayi_pirate/status/1882839370505621655
 
 Full experiment log: https://wandb.ai/jiayipan/TinyZero
 
-## Instalation
+## Installation
 
 ```
 conda create -n zero python=3.9

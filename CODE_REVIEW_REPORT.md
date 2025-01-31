@@ -27,3 +27,16 @@ The TinyZero repository is a clean, minimal, and accessible reproduction of Deep
 ## Conclusion
 
 The TinyZero repository is well-structured and contains comprehensive scripts for various tasks. Improving the documentation will enhance usability and encourage contributions from the community.
+
+## train_tiny_zero.sh
+
+### Observations
+- The script runs a Python training script with various configuration parameters.
+- Parameters are organized for readability.
+- Output is redirected to a log file.
+
+### Suggestions for Improvement
+1. **Parameter Organization**: Add comments explaining the purpose of each parameter for better understanding.
+2. **Error Handling**: Implement error handling to ensure graceful exit if issues occur.
+3. **Logging**: Include a timestamp in the log file name for easier identification of different runs.
+4. **Parameterization**: Parameterize hardcoded values for flexibility.

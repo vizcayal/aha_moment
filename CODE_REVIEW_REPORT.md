@@ -51,3 +51,15 @@ The TinyZero repository is well-structured and contains comprehensive scripts fo
 1. **Comments**: Add comments to explain the purpose of the script and the formatting style used.
 2. **Error Handling**: Implement error handling to ensure graceful exit if the `yapf` installation or formatting fails.
 3. **Parameterization**: Allow users to specify directories to format and the style file for flexibility.
+
+## main_ppo.py
+
+### Observations
+- The script sets up a PPO trainer using Hydra for configuration.
+- It includes a `RewardManager` class for managing rewards based on data sources.
+
+### Suggestions for Improvement
+1. **Comments and Documentation**: Add detailed comments and docstrings to improve readability.
+2. **Error Handling**: Implement error handling in data processing and model training.
+3. **Logging**: Add logging statements to track the training process and debug issues.
+4. **Parameterization**: Allow more parameters to be configurable via Hydra for flexibility.

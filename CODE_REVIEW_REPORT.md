@@ -40,3 +40,14 @@ The TinyZero repository is well-structured and contains comprehensive scripts fo
 2. **Error Handling**: Implement error handling to ensure graceful exit if issues occur.
 3. **Logging**: Include a timestamp in the log file name for easier identification of different runs.
 4. **Parameterization**: Parameterize hardcoded values for flexibility.
+
+## format.sh
+
+### Observations
+- The script installs and upgrades the `yapf` package and formats Python files in specific directories.
+- The formatting is done using a specified style file.
+
+### Suggestions for Improvement
+1. **Comments**: Add comments to explain the purpose of the script and the formatting style used.
+2. **Error Handling**: Implement error handling to ensure graceful exit if the `yapf` installation or formatting fails.
+3. **Parameterization**: Allow users to specify directories to format and the style file for flexibility.

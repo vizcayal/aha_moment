@@ -15,6 +15,56 @@ Paper's on it's way!
 
 ## Installation
 
+### Setup Instructions
+
+1. **Create a Virtual Environment**:
+   - Open your terminal or command prompt.
+   - Navigate to the project directory.
+   - Create a new virtual environment using `conda`:
+     ```bash
+     conda create -n zero python=3.9
+     ```
+   - Activate the virtual environment:
+     ```bash
+     conda activate zero
+     ```
+
+2. **Install Dependencies**:
+   - Install the required Python packages using `pip`:
+     ```bash
+     pip install torch==1.4.0 -f https://download.pytorch.org/whl/cu101
+     pip install vllm
+     pip install vllm==0.0.3.0
+     pip install ray
+     pip install -e .
+     pip install flash-attn --no-build-isolation
+     pip install wandb IPython matplotlib
+     ```
+
+3. **Additional Setup**:
+   - Ensure all dependencies are installed correctly by running a sample script:
+     ```bash
+     python examples/data_preprocess/countdown.py --local_dir_path ./data/countdown
+     ```
+
+### Usage Examples
+
+- **Running Training**:
+  - To run the training script, use the following command:
+    ```bash
+    python train.py --config configs/train_config.yaml
+    ```
+  - Customize the training configuration by editing the `train_config.yaml` file.
+
+### Contribution Guidelines
+
+- **Fork the Repository**: Fork the repository to your GitHub account.
+- **Create a Branch**: Create a new branch for your feature or bug fix.
+- **Commit Changes**: Commit your changes with descriptive commit messages.
+- **Push to GitHub**: Push your branch to your GitHub fork.
+- **Submit a Pull Request**: Create a pull request to merge your changes into the main repository.
+
+
 ```
 conda create -n zero python=3.9
 # install torch [or you can skip this step and let vllm to install the correct version for you]
